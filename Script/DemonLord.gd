@@ -6,6 +6,10 @@ var has_summoned = false
 onready var sprite = $AnimatedSprite
 onready var collision = $CollisionShape2D
 
+# Setup Audio
+onready var sfx_summon = $SFX/SFXSummon
+onready var sfx_death = $SFX/SFXDeath
+
 func _ready():
 	add_to_group("enemy")
 	add_to_group("boss")
@@ -19,6 +23,8 @@ func start_summon_sequence(is_instant = false):
 		sprite.play("demonlord_idle")
 		get_tree().call_group("summoned_minion", "spawn_instant")
 	else:
+		# Play SFX Summon
+		sfx_summon.play()
 		sprite.play("demonlord_summon")
 		yield(get_tree().create_timer(0.5), "timeout")
 		
@@ -44,6 +50,9 @@ func attack_target(_player):
 func die():
 	if is_dead: return
 	is_dead = true
+	
+	# Play SFX Death
+	sfx_death.play()
 	
 	if is_in_group("enemy"):
 		remove_from_group("enemy")

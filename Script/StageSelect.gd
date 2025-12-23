@@ -16,6 +16,7 @@ onready var locked_icons = [
 ]
 
 onready var back_button = $Back
+onready var sfx_click = $SFXClick
 
 func _ready():
 	update_stage_lock()
@@ -46,6 +47,8 @@ func connect_stage_buttons():
 			stage_buttons[i].connect("pressed", self, "_on_stage_button_pressed", [i + 1])
 
 func _on_stage_button_pressed(stage_number):
+	sfx_click.play()
+	
 	var path = ""
 	
 	if stage_number == 4:
@@ -54,9 +57,10 @@ func _on_stage_button_pressed(stage_number):
 		path = "res://Scene/Stage/Stage5Phase1.tscn"
 	else:
 		path = "res://Scene/Stage/Stage%d.tscn" % stage_number
-	# ---------------------------
 	
 	Global.stop_bgm()
+	
+	yield(get_tree().create_timer(0.2), "timeout")
 	
 	if ResourceLoader.exists(path):
 		get_tree().change_scene(path)
@@ -64,4 +68,6 @@ func _on_stage_button_pressed(stage_number):
 		print("Scene tidak ditemukan: %s" % path)
 
 func _on_back_button_pressed():
+	sfx_click.play()
+	yield(get_tree().create_timer(0.2), "timeout")
 	queue_free()

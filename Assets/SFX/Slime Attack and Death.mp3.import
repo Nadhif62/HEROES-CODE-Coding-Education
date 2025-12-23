@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Slime Attack and Death.mp3-665b73d90d80f461872be75acbc83479.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/Slime Attack and Death.mp3"
+dest_files=[ "res://.import/Slime Attack and Death.mp3-665b73d90d80f461872be75acbc83479.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

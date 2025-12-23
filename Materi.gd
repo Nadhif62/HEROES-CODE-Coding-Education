@@ -3,8 +3,8 @@ extends Control
 onready var scroll_container = $TextureRect/ScrollContainer
 onready var vbox_container = $TextureRect/ScrollContainer/VBoxContainer
 onready var close_button = $CloseButton 
+onready var sfx_click = $SFXClick
 
-# PENTING: Kita preload dulu scenenya biar bisa ditumpuk
 var scene_isi_materi = preload("res://Scene/Materi/IsiMateri.tscn")
 
 func _ready():
@@ -47,13 +47,12 @@ func _ready():
 		close_button.connect("pressed", self, "_on_close_pressed")
 
 func buka_materi(nomor):
+	sfx_click.play()
 	Global.materi_aktif = nomor
-	
-	# --- PERBAIKAN DISINI ---
-	# Jangan change_scene, tapi Instance & Add Child (Menumpuk)
 	var popup = scene_isi_materi.instance()
 	add_child(popup)
 
 func _on_close_pressed():
-	# Hancurkan diri sendiri biar Main Menu di belakangnya kelihatan lagi
+	sfx_click.play()
+	yield(get_tree().create_timer(0.2), "timeout")
 	queue_free()

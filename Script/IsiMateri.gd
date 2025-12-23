@@ -2,6 +2,7 @@ extends Control
 
 onready var tempat_foto = $TextureRect/ScrollContainer/TextureRect
 onready var scroll_container = $TextureRect/ScrollContainer
+onready var sfx_click = $SFXClick
 
 var folder_gambar = "res://Assets/UI/Materi/"
 
@@ -27,4 +28,6 @@ func _ready():
 		print("ERROR: Gambar tidak ditemukan di " + path_lengkap)
 
 func _on_BackButton_pressed():
+	sfx_click.play()
+	yield(get_tree().create_timer(0.2), "timeout")
 	queue_free()

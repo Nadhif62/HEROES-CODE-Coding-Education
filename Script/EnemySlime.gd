@@ -5,6 +5,8 @@ var speed_multiplier = 1.0
 
 onready var sprite = $AnimatedSprite
 onready var collision = $CollisionShape2D
+onready var sfx_death = $SFX/SFXDeath
+onready var sfx_attack = $SFX/SFXAttack
 
 func _ready():
 	add_to_group("enemy")
@@ -23,6 +25,7 @@ func revive():
 func die():
 	if is_dead: return
 	
+	sfx_death.play()
 	is_dead = true
 	collision.set_deferred("disabled", true)
 	
@@ -38,6 +41,7 @@ func die():
 func attack_target(player_body):
 	if is_dead: return
 	
+	sfx_attack.play()
 	sprite.play("slime_attack")
 	
 	yield(get_tree().create_timer(0.3 / float(speed_multiplier)), "timeout")
@@ -47,4 +51,3 @@ func attack_target(player_body):
 		
 	yield(sprite, "animation_finished")
 	sprite.play("slime_idle")
-	

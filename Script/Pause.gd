@@ -1,17 +1,15 @@
 extends Control
 
-# [BARU] Load scene Setting terlebih dahulu
 var SettingScene = preload("res://Scene/Setting.tscn") 
 
 onready var stage_pause = $StagePause
 onready var btn_back = $BackToGame
 onready var btn_setting = $Setting
 onready var btn_home = $Home
+onready var sfx_click = $SFXClick
 
 func _ready():
 	visible = false
-	# Ini membuat Pause menu DAN anak-anaknya (termasuk Setting nanti) 
-	# tetap jalan meskipun game dipause
 	pause_mode = Node.PAUSE_MODE_PROCESS 
 
 	btn_back.connect("pressed", self, "_on_BackToGame_pressed")
@@ -25,17 +23,15 @@ func _load_stage_pause_ui():
 	var id = scene.get("stage_id")
 
 	if id == null:
-		return # Tidak perlu print error kalau tidak ada id, return saja
+		return 
 
 	var path = "res://Assets/UI/Pause Stage %s.png" % id
 
 	if ResourceLoader.exists(path):
 		stage_pause.texture = load(path)
 
-# =============================================================
-# LOGIKA TOMBOL
-# =============================================================
 func open_pause():
+	sfx_click.play()
 	get_tree().paused = true
 	visible = true
 
@@ -44,12 +40,16 @@ func close_pause():
 	visible = false
 
 func _on_BackToGame_pressed():
+	sfx_click.play()
 	close_pause()
 
 func _on_Setting_pressed():
+	sfx_click.play()
 	var setting_instance = SettingScene.instance()
 	add_child(setting_instance)
 
 func _on_Home_pressed():
+	sfx_click.play()
+	yield(get_tree().create_timer(0.2), "timeout")
 	get_tree().paused = false
 	get_tree().change_scene("res://Scene/Main Menu.tscn")

@@ -18,6 +18,9 @@ var is_knockback = false
 
 onready var sprite = $AnimatedSprite
 onready var text_edit = get_node("../../UI/TextureRect/TextEdit")
+onready var sfx_step = $SFX/SFXSteps
+onready var sfx_attack = $SFX/SFXAttack
+
 var StageCompletedScene = preload("res://Scene/StageCompleted.tscn")
 
 func _ready():
@@ -359,6 +362,8 @@ func _move(steps):
 		
 		if not running: break
 		
+		sfx_step.play()
+		
 		var pixels_moved = 0.0
 		var target_pixels = cell_size
 		
@@ -406,6 +411,9 @@ func _turn(dir_num, steps):
 func _attack():
 	while is_knockback: yield(get_tree(), "idle_frame")
 	if not running: return
+	
+	sfx_step.stop() # MATIKAN suara langkah agar tidak bocor
+	sfx_attack.play()
 	
 	if sprite.frames.has_animation("knight_attack_" + facing):
 		sprite.play("knight_attack_%s" % facing)
@@ -458,11 +466,17 @@ func reset_script():
 	is_knockback = false
 	get_tree().call_group("enemy", "revive")
 	get_tree().call_group("finish", "reset")
+	
+	# Matikan semua sfx saat reset
+	sfx_step.stop()
+	sfx_attack.stop()
 
 func apply_knockback():
 	if is_knockback: return
 	is_knockback = true
 	_sprite_idle()
+	
+	sfx_step.stop() # Knockback juga harus stop langkah
 	
 	var t_flash = Tween.new()
 	add_child(t_flash)
@@ -486,6 +500,7 @@ func apply_knockback():
 	is_knockback = false
 
 func die():
+	sfx_step.stop() # Pastikan diam saat mati
 	running = false
 	set_process(false)
 	yield(get_tree().create_timer(0.8 / float(speed_multiplier)), "timeout")
@@ -496,6 +511,7 @@ func die():
 	yield(tween, "tween_completed")
 
 func victory():
+	sfx_step.stop() # PENTING: Matikan suara langkah saat menang
 	running = false
 	set_process(false)
 	_sprite_idle()

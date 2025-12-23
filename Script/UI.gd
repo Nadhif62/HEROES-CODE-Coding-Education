@@ -35,6 +35,8 @@ onready var player = get_parent().get_node("YSort/Player")
 onready var panel_bg = $TextureRect
 onready var expand_button = $TextureRect/ExpandButton
 
+onready var sfx_click = $SFXClick
+
 func _ready():
 	pause_instance = pause_scene.instance()
 	add_child(pause_instance)
@@ -76,6 +78,7 @@ func _ready():
 
 func _on_expand_pressed():
 	if not panel_bg: return
+	sfx_click.play()
 	
 	is_expanded = !is_expanded
 	
@@ -168,6 +171,7 @@ func set_run_button_enabled(enabled):
 			run_button.modulate = Color(0.5, 0.5, 0.5, 1)
 
 func _on_run_pressed():
+	sfx_click.play()
 	player.text_edit = text_box
 	if player.has_method("run_script"):
 		set_run_button_enabled(false)
@@ -175,6 +179,7 @@ func _on_run_pressed():
 		if is_expanded: _on_expand_pressed()
 
 func _on_stop_pressed():
+	sfx_click.play()
 	if player.has_method("reset_script"):
 		player.reset_script()
 		set_run_button_enabled(true)
@@ -183,6 +188,7 @@ func _on_player_completed():
 	set_run_button_enabled(true)
 
 func _on_speed_pressed():
+	sfx_click.play()
 	current_speed_index = (current_speed_index + 1) % speed_textures.size()
 	if speed_texture_rect:
 		speed_texture_rect.texture = speed_textures[current_speed_index]

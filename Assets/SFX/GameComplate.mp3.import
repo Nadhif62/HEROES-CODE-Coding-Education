@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/GameComplate.mp3-44d67cabf3ce4988608b387a04c3080c.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/GameComplate.mp3"
+dest_files=[ "res://.import/GameComplate.mp3-44d67cabf3ce4988608b387a04c3080c.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

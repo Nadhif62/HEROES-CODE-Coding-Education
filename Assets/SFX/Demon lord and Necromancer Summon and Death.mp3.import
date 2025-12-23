@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Demon lord and Necromancer Summon and Death.mp3-bf2fe304605260d4fa9319a2f91237c2.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/Demon lord and Necromancer Summon and Death.mp3"
+dest_files=[ "res://.import/Demon lord and Necromancer Summon and Death.mp3-bf2fe304605260d4fa9319a2f91237c2.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
