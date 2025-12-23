@@ -1,0 +1,131 @@
+[gd_scene load_steps=52 format=2]
+
+[ext_resource path="res://Assets/Knight/Knight Running Behind 3.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Knight/Knight Idle2.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Knight/Knight idle Front5.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Knight/Knight Idle Right4.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Knight/Knight Running Front1.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Knight/Knight Idle1.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Knight/Knight Running Front2.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Knight/Knight Attack Front4.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Knight/Knight Running1.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Knight/Knight Idle Behind2.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Knight/Knight Running Front5.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Knight/Knight Idle Right1.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Knight/Knight idle Front4.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Knight/Knight Running2.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Knight/Knight Idle Front2.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Knight/Knight Idle Front3.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Knight/Knight Running3.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Knight/Knight Running Behind 2.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Knight/Knight Running Right1.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Knight/Knight Running Behind 1.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Knight/Knight Idle Front1.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Knight/Knight Running Right3.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Knight/Knight Idle3.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Knight/Knight Idle Right3.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Knight/Knight Idle Right2.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Knight/Knight Running Front6.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Knight/Knight Running Front3.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Knight/Knight Running Front4.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Knight/Knight Running Right2.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Knight/Knight Attack Right3.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Knight/Knight Idle Behind1.png" type="Texture" id=31]
+[ext_resource path="res://Assets/Knight/Knight idle Front6.png" type="Texture" id=32]
+[ext_resource path="res://Assets/Knight/Knight Attack Right2.png" type="Texture" id=33]
+[ext_resource path="res://Assets/Knight/Knight Attack Right1.png" type="Texture" id=34]
+[ext_resource path="res://Assets/Knight/Knight Attack Right4.png" type="Texture" id=35]
+[ext_resource path="res://Assets/Knight/Knight Idle Behind4.png" type="Texture" id=36]
+[ext_resource path="res://Assets/Knight/Knight Idle Behind3.png" type="Texture" id=37]
+[ext_resource path="res://Assets/Knight/Knight Attack Behind2.png" type="Texture" id=38]
+[ext_resource path="res://Assets/Knight/Knight Attack2.png" type="Texture" id=39]
+[ext_resource path="res://Assets/Knight/Knight Attack Behind1.png" type="Texture" id=40]
+[ext_resource path="res://Assets/Knight/Knight Attack3.png" type="Texture" id=41]
+[ext_resource path="res://Assets/Knight/Knight Attack Front1.png" type="Texture" id=42]
+[ext_resource path="res://Assets/Knight/Knight Attack Front3.png" type="Texture" id=43]
+[ext_resource path="res://Assets/Knight/Knight Attack Behind3.png" type="Texture" id=44]
+[ext_resource path="res://Assets/Knight/Knight Attack Front2.png" type="Texture" id=45]
+[ext_resource path="res://Assets/Knight/Knight Attack1.png" type="Texture" id=46]
+[ext_resource path="res://Assets/Knight/Knight Attack4.png" type="Texture" id=47]
+[ext_resource path="res://Assets/Knight/Knight Attack Behind4.png" type="Texture" id=48]
+[ext_resource path="res://Script/Player.gd" type="Script" id=49]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 40 ), ExtResource( 38 ), ExtResource( 44 ), ExtResource( 48 ) ],
+"loop": true,
+"name": "knight_attack_behind",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 42 ), ExtResource( 45 ), ExtResource( 43 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "knight_attack_front",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 46 ), ExtResource( 39 ), ExtResource( 41 ), ExtResource( 47 ) ],
+"loop": true,
+"name": "knight_attack_left",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 34 ), ExtResource( 33 ), ExtResource( 30 ), ExtResource( 35 ) ],
+"loop": true,
+"name": "knight_attack_right",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 31 ), ExtResource( 10 ), ExtResource( 37 ), ExtResource( 36 ) ],
+"loop": true,
+"name": "knight_idle_behind",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 13 ), ExtResource( 3 ), ExtResource( 32 ) ],
+"loop": true,
+"name": "knight_idle_front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 2 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "knight_idle_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 25 ), ExtResource( 24 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "knight_idle_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 18 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "knight_walk_behind",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 7 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 11 ), ExtResource( 26 ) ],
+"loop": true,
+"name": "knight_walk_front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 14 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "knight_walk_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 29 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "knight_walk_right",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 32, 32 )
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 160, 544 )
+collision/safe_margin = 0.005
+script = ExtResource( 49 )
+kill_all_to_win = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -5, -43 )
+frames = SubResource( 4 )
+animation = "knight_walk_left"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 18 )

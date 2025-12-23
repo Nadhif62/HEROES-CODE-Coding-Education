@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 960, 10 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 960, 10 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 10, 540 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 10, 540 )
+
+[node name="Barier" type="Node2D"]
+
+[node name="BarierTop" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BarierTop"]
+position = Vector2( 960, -10 )
+shape = SubResource( 8 )
+
+[node name="BarierBottom" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BarierBottom"]
+position = Vector2( 965, 778 )
+shape = SubResource( 9 )
+
+[node name="BarierLeft" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BarierLeft"]
+position = Vector2( -10, 540 )
+shape = SubResource( 10 )
+
+[node name="BarierRight" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BarierRight"]
+position = Vector2( 1930, 540 )
+shape = SubResource( 11 )

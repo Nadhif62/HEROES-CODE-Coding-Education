@@ -1,0 +1,43 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Assets/Enemy/Slime Attack2.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Enemy/Slime Attack1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Enemy/Slime Attack3.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Enemy/Slime Idle1.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Enemy/Slime Attack4.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Enemy/Slime Attack6.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Enemy/Slime Idle3.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Enemy/Slime Idle5.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Enemy/Slime Attack5.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Enemy/Slime Attack7.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Enemy/Slime Idle2.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Enemy/Slime Idle6.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Enemy/Slime Idle4.png" type="Texture" id=13]
+[ext_resource path="res://Script/EnemySlime.gd" type="Script" id=14]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "slime_attack",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 13 ), ExtResource( 8 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "slime_idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 31, 31 )
+
+[node name="EnemySlime" type="StaticBody2D" groups=["enemy"]]
+script = ExtResource( 14 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -71 )
+frames = SubResource( 1 )
+animation = "slime_attack"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )

@@ -1,0 +1,652 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Scene/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scene/Grid.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scene/Barier.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scene/UI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/BG/BG.png" type="Texture" id=5]
+[ext_resource path="res://Scene/Finish.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scene/Enemy/EnemySlime.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Script/Stage3.gd" type="Script" id=8]
+[ext_resource path="res://Scene/Wall Horizontal.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scene/Wall Vertikal.tscn" type="PackedScene" id=10]
+
+[sub_resource type="TileSet" id=1]
+0/name = "BG.png 0"
+0/texture = ExtResource( 5 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( -2, -2, 308, 291 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[node name="Stage3" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="Dirt" type="TileMap" parent="."]
+scale = Vector2( 0.4, 0.4 )
+z_index = -2
+tile_set = SubResource( 1 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 4, 0, 0, 8, 0, 0, 12, 0, 0, 16, 0, 0, 20, 0, 0, 24, 0, 0, 28, 0, 0, 32, 0, 0, 36, 0, 0, 40, 0, 0, 44, 0, 0, 48, 0, 0, 52, 0, 0, 56, 0, 0, 60, 0, 0, 64, 0, 0, 68, 0, 0, 71, 0, 0, 131076, 0, 0, 131080, 0, 0, 131084, 0, 0, 262144, 0, 0, 262160, 0, 0, 262164, 0, 0, 262168, 0, 0, 262172, 0, 0, 262176, 0, 0, 262180, 0, 0, 262184, 0, 0, 262188, 0, 0, 262192, 0, 0, 262196, 0, 0, 262200, 0, 0, 262204, 0, 0, 262208, 0, 0, 262212, 0, 0, 262215, 0, 0, 327695, 0, 0, 393220, 0, 0, 393223, 0, 0, 393227, 0, 0, 458767, 0, 0, 524288, 0, 0, 524304, 0, 0, 524308, 0, 0, 524312, 0, 0, 524313, 0, 0, 524316, 0, 0, 524320, 0, 0, 524324, 0, 0, 524328, 0, 0, 524332, 0, 0, 524336, 0, 0, 524340, 0, 0, 524344, 0, 0, 524348, 0, 0, 524352, 0, 0, 524356, 0, 0, 524359, 0, 0, 655364, 0, 0, 655367, 0, 0, 655371, 0, 0, 655375, 0, 0, 786432, 0, 0, 786448, 0, 0, 786452, 0, 0, 786456, 0, 0, 786460, 0, 0, 786464, 0, 0, 786468, 0, 0, 786472, 0, 0, 786473, 0, 0, 786476, 0, 0, 786480, 0, 0, 786484, 0, 0, 786488, 0, 0, 786492, 0, 0, 786496, 0, 0, 786500, 0, 0, 786503, 0, 0, 917508, 0, 0, 917512, 0, 0, 917516, 0, 0, 983056, 0, 0, 1048576, 0, 0, 1048596, 0, 0, 1048600, 0, 0, 1048604, 0, 0, 1048608, 0, 0, 1048612, 0, 0, 1048616, 0, 0, 1048620, 0, 0, 1048624, 0, 0, 1048628, 0, 0, 1048632, 0, 0, 1048636, 0, 0, 1048640, 0, 0, 1048643, 0, 0, 1048647, 0, 0, 1179648, 0, 0, 1179652, 0, 0, 1179656, 0, 0, 1179658, 0, 0, 1179662, 0, 0, 1245200, 0, 0, 1310740, 0, 0, 1310744, 0, 0, 1310748, 0, 0, 1310752, 0, 0, 1310756, 0, 0, 1310759, 0, 0, 1310763, 0, 0, 1310767, 0, 0, 1310771, 0, 0, 1310775, 0, 0, 1310779, 0, 0, 1310783, 0, 0, 1310787, 0, 0, 1310791, 0, 0, 1441792, 0, 0, 1441796, 0, 0, 1441800, 0, 0, 1441804, 0, 0, 1441830, 0, 0, 1441833, 0, 0, 1507344, 0, 0, 1572872, 0, 0, 1572884, 0, 0, 1572888, 0, 0, 1572892, 0, 0, 1572896, 0, 0, 1572900, 0, 0, 1572908, 0, 0, 1572912, 0, 0, 1572916, 0, 0, 1572920, 0, 0, 1572924, 0, 0, 1572928, 0, 0, 1572932, 0, 0, 1572935, 0, 0, 1638404, 0, 0, 1638440, 0, 0, 1703936, 0, 0, 1703948, 0, 0, 1703976, 0, 0, 1769488, 0, 0, 1769508, 0, 0, 1835016, 0, 0, 1835028, 0, 0, 1835032, 0, 0, 1835036, 0, 0, 1835040, 0, 0, 1835052, 0, 0, 1835056, 0, 0, 1835060, 0, 0, 1835064, 0, 0, 1835068, 0, 0, 1835072, 0, 0, 1835076, 0, 0, 1835079, 0, 0, 1900548, 0, 0, 1900584, 0, 0, 1966080, 0, 0, 1966084, 0, 0, 1966092, 0, 0, 2031632, 0, 0, 2031640, 0, 0, 2031652, 0, 0, 2097160, 0, 0, 2097172, 0, 0, 2097180, 0, 0, 2097184, 0, 0, 2097192, 0, 0, 2097196, 0, 0, 2097200, 0, 0, 2097204, 0, 0, 2097208, 0, 0, 2097212, 0, 0, 2097216, 0, 0, 2097220, 0, 0, 2097223, 0, 0, 2228224, 0, 0, 2228228, 0, 0, 2228236, 0, 0, 2228264, 0, 0, 2293776, 0, 0, 2293784, 0, 0, 2293796, 0, 0, 2359304, 0, 0, 2359316, 0, 0, 2359324, 0, 0, 2359328, 0, 0, 2359340, 0, 0, 2359344, 0, 0, 2359348, 0, 0, 2359352, 0, 0, 2359356, 0, 0, 2359360, 0, 0, 2359364, 0, 0, 2359367, 0, 0, 2490368, 0, 0, 2490372, 0, 0, 2490376, 0, 0, 2490380, 0, 0, 2490384, 0, 0, 2490388, 0, 0, 2490392, 0, 0, 2490396, 0, 0, 2490400, 0, 0, 2490404, 0, 0, 2490408, 0, 0, 2490412, 0, 0, 2490416, 0, 0, 2490420, 0, 0, 2490424, 0, 0, 2490428, 0, 0, 2490432, 0, 0, 2490436, 0, 0, 2490439, 0, 0 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Wall Horizontal" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 32, 736 )
+
+[node name="Wall Horizontal2" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 96, 736 )
+
+[node name="Wall Horizontal3" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 160, 736 )
+
+[node name="Wall Horizontal4" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 224, 736 )
+
+[node name="Wall Horizontal5" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 288, 736 )
+
+[node name="Wall Horizontal61" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 96, 160 )
+
+[node name="Wall Horizontal62" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 160, 160 )
+
+[node name="Wall Horizontal63" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 224, 160 )
+
+[node name="Wall Horizontal64" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 288, 160 )
+
+[node name="Wall Horizontal65" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 352, 160 )
+
+[node name="Wall Horizontal70" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 96, 288 )
+
+[node name="Wall Horizontal71" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 160, 288 )
+
+[node name="Wall Horizontal72" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 224, 288 )
+
+[node name="Wall Horizontal74" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 352, 288 )
+
+[node name="Wall Horizontal75" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 288, 288 )
+
+[node name="Wall Horizontal76" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 480, 288 )
+
+[node name="Wall Horizontal77" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 544, 288 )
+
+[node name="Wall Horizontal78" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 608, 288 )
+
+[node name="Wall Horizontal79" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 672, 288 )
+
+[node name="Wall Horizontal80" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 736, 288 )
+
+[node name="Wall Horizontal81" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 800, 288 )
+
+[node name="Wall Horizontal82" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 864, 288 )
+
+[node name="Wall Horizontal83" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 928, 288 )
+
+[node name="Wall Horizontal84" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 992, 288 )
+
+[node name="Wall Horizontal105" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1120, 416 )
+
+[node name="Wall Horizontal85" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 800, 160 )
+
+[node name="Wall Horizontal86" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 864, 160 )
+
+[node name="Wall Horizontal87" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 928, 160 )
+
+[node name="Wall Horizontal88" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 992, 160 )
+
+[node name="Wall Horizontal106" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1120, 160 )
+
+[node name="Wall Horizontal66" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 480, 160 )
+
+[node name="Wall Horizontal67" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 544, 160 )
+
+[node name="Wall Horizontal68" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 672, 160 )
+
+[node name="Wall Horizontal104" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 608, 160 )
+
+[node name="Wall Horizontal69" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 736, 160 )
+
+[node name="Wall Horizontal6" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 352, 736 )
+
+[node name="Wall Horizontal7" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 416, 736 )
+
+[node name="Wall Horizontal8" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 480, 736 )
+
+[node name="Wall Horizontal9" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 544, 736 )
+
+[node name="Wall Horizontal10" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 608, 736 )
+
+[node name="Wall Horizontal11" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 672, 736 )
+
+[node name="Wall Horizontal12" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 736, 736 )
+
+[node name="Wall Horizontal13" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 800, 736 )
+
+[node name="Wall Horizontal14" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 864, 736 )
+
+[node name="Wall Horizontal15" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 928, 736 )
+
+[node name="Wall Horizontal16" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 992, 736 )
+
+[node name="Wall Horizontal17" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1056, 736 )
+
+[node name="Wall Horizontal89" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 160, 416 )
+
+[node name="Wall Horizontal90" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 224, 416 )
+
+[node name="Wall Horizontal91" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 288, 416 )
+
+[node name="Wall Horizontal92" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 352, 416 )
+
+[node name="Wall Horizontal93" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 416, 416 )
+
+[node name="Wall Horizontal94" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 480, 416 )
+
+[node name="Wall Horizontal95" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 544, 416 )
+
+[node name="Wall Horizontal96" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 608, 416 )
+
+[node name="Wall Horizontal97" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 672, 416 )
+
+[node name="Wall Horizontal98" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 736, 416 )
+
+[node name="Wall Horizontal99" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 800, 416 )
+
+[node name="Wall Horizontal100" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 864, 416 )
+
+[node name="Wall Horizontal101" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 928, 416 )
+
+[node name="Wall Horizontal102" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 992, 416 )
+
+[node name="Wall Horizontal103" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1056, 416 )
+
+[node name="Wall Horizontal147" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 96, 544 )
+
+[node name="Wall Horizontal148" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 160, 544 )
+
+[node name="Wall Horizontal149" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 224, 544 )
+
+[node name="Wall Horizontal150" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 288, 544 )
+
+[node name="Wall Horizontal151" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 352, 544 )
+
+[node name="Wall Horizontal152" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 416, 544 )
+
+[node name="Wall Horizontal153" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 480, 544 )
+
+[node name="Wall Horizontal154" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 544, 544 )
+
+[node name="Wall Horizontal155" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 608, 544 )
+
+[node name="Wall Horizontal156" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 672, 544 )
+
+[node name="Wall Horizontal157" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 736, 544 )
+
+[node name="Wall Horizontal158" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 800, 544 )
+
+[node name="Wall Horizontal159" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 864, 544 )
+
+[node name="Wall Horizontal160" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 928, 544 )
+
+[node name="Wall Horizontal161" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 992, 544 )
+
+[node name="Wall Horizontal107" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1632, 160 )
+
+[node name="Wall Horizontal108" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1184, 160 )
+
+[node name="Wall Horizontal109" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1248, 160 )
+
+[node name="Wall Horizontal110" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1312, 160 )
+
+[node name="Wall Horizontal111" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1376, 160 )
+
+[node name="Wall Horizontal112" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1440, 160 )
+
+[node name="Wall Horizontal113" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1504, 160 )
+
+[node name="Wall Horizontal114" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1568, 160 )
+
+[node name="Wall Horizontal115" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1760, 160 )
+
+[node name="Wall Horizontal116" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1696, 160 )
+
+[node name="Wall Horizontal117" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1696, 288 )
+
+[node name="Wall Horizontal118" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1248, 288 )
+
+[node name="Wall Horizontal119" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1312, 288 )
+
+[node name="Wall Horizontal120" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1376, 288 )
+
+[node name="Wall Horizontal121" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1440, 288 )
+
+[node name="Wall Horizontal122" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1504, 288 )
+
+[node name="Wall Horizontal123" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1568, 288 )
+
+[node name="Wall Horizontal124" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1632, 288 )
+
+[node name="Wall Horizontal125" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1824, 288 )
+
+[node name="Wall Horizontal126" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1760, 288 )
+
+[node name="Wall Horizontal127" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1632, 416 )
+
+[node name="Wall Horizontal128" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1184, 416 )
+
+[node name="Wall Horizontal129" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1248, 416 )
+
+[node name="Wall Horizontal130" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1312, 416 )
+
+[node name="Wall Horizontal131" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1376, 416 )
+
+[node name="Wall Horizontal132" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1440, 416 )
+
+[node name="Wall Horizontal133" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1504, 416 )
+
+[node name="Wall Horizontal134" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1568, 416 )
+
+[node name="Wall Horizontal135" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1760, 416 )
+
+[node name="Wall Horizontal136" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1696, 416 )
+
+[node name="Wall Horizontal137" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1696, 544 )
+
+[node name="Wall Horizontal138" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1248, 544 )
+
+[node name="Wall Horizontal139" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1312, 544 )
+
+[node name="Wall Horizontal140" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1376, 544 )
+
+[node name="Wall Horizontal141" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1440, 544 )
+
+[node name="Wall Horizontal142" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1504, 544 )
+
+[node name="Wall Horizontal143" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1568, 544 )
+
+[node name="Wall Horizontal144" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1632, 544 )
+
+[node name="Wall Horizontal162" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1248, 672 )
+
+[node name="Wall Horizontal165" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1376, 608 )
+
+[node name="Wall Horizontal163" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1504, 673 )
+
+[node name="Wall Horizontal164" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1632, 608 )
+
+[node name="Wall Horizontal145" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1824, 544 )
+
+[node name="Wall Horizontal146" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1760, 544 )
+
+[node name="Wall Horizontal18" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1120, 736 )
+
+[node name="Wall Horizontal19" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1184, 736 )
+
+[node name="Wall Horizontal20" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1248, 736 )
+
+[node name="Wall Horizontal21" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1312, 736 )
+
+[node name="Wall Horizontal22" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1376, 736 )
+
+[node name="Wall Horizontal23" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1440, 736 )
+
+[node name="Wall Horizontal24" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1504, 736 )
+
+[node name="Wall Horizontal25" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1568, 736 )
+
+[node name="Wall Horizontal26" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1632, 736 )
+
+[node name="Wall Horizontal27" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1696, 736 )
+
+[node name="Wall Horizontal28" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1760, 736 )
+
+[node name="Wall Horizontal29" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1824, 736 )
+
+[node name="Wall Horizontal30" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1888, 736 )
+
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 160, 96 )
+kill_all_to_win = false
+current_stage_id = 3
+
+[node name="Wall Horizontal31" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 32, 32 )
+
+[node name="Wall Horizontal32" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 96, 32 )
+
+[node name="Wall Horizontal33" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 160, 32 )
+
+[node name="Wall Horizontal34" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 224, 32 )
+
+[node name="Wall Horizontal35" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 288, 32 )
+
+[node name="Wall Horizontal36" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 352, 32 )
+
+[node name="Wall Horizontal37" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 416, 32 )
+
+[node name="Wall Horizontal38" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 480, 32 )
+
+[node name="Wall Horizontal39" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 544, 32 )
+
+[node name="Wall Horizontal40" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 608, 32 )
+
+[node name="Wall Horizontal41" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 672, 32 )
+
+[node name="Wall Horizontal42" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 736, 32 )
+
+[node name="Wall Horizontal43" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 800, 32 )
+
+[node name="Wall Horizontal44" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 864, 32 )
+
+[node name="Wall Horizontal45" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 928, 32 )
+
+[node name="Wall Horizontal46" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 992, 32 )
+
+[node name="Wall Horizontal47" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1056, 32 )
+
+[node name="Wall Horizontal48" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1120, 32 )
+
+[node name="Wall Horizontal49" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1184, 32 )
+
+[node name="Wall Horizontal50" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1248, 32 )
+
+[node name="Wall Horizontal51" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1312, 32 )
+
+[node name="Wall Horizontal52" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1376, 32 )
+
+[node name="Wall Horizontal53" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1440, 32 )
+
+[node name="Wall Horizontal54" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1504, 32 )
+
+[node name="Wall Horizontal55" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1568, 32 )
+
+[node name="Wall Horizontal56" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1632, 32 )
+
+[node name="Wall Horizontal57" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1696, 32 )
+
+[node name="Wall Horizontal58" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1760, 32 )
+
+[node name="Wall Horizontal59" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1824, 32 )
+
+[node name="Wall Horizontal60" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1888, 32 )
+
+[node name="Wall Vertikal" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 30, 95 )
+
+[node name="Wall Vertikal2" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 30, 159 )
+
+[node name="Wall Vertikal11" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 989, 97 )
+
+[node name="Wall Vertikal12" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 989, 97 )
+
+[node name="Wall Vertikal23" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 990, 222 )
+
+[node name="Wall Vertikal3" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 30, 223 )
+
+[node name="Wall Vertikal4" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 30, 287 )
+
+[node name="Wall Vertikal5" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 30, 351 )
+
+[node name="Wall Vertikal6" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 30, 416 )
+
+[node name="Wall Vertikal7" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 30, 479 )
+
+[node name="Wall Vertikal8" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 30, 543 )
+
+[node name="Wall Vertikal9" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 30, 607 )
+
+[node name="Wall Vertikal10" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 30, 672 )
+
+[node name="Wall Vertikal13" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 1886, 95 )
+
+[node name="Wall Vertikal14" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 1886, 159 )
+
+[node name="Wall Vertikal15" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 1886, 223 )
+
+[node name="Wall Vertikal24" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 1118, 223 )
+
+[node name="Wall Vertikal25" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 1118, 287 )
+
+[node name="Wall Vertikal26" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 1118, 351 )
+
+[node name="Wall Vertikal27" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 1118, 479 )
+
+[node name="Wall Vertikal28" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 1118, 543 )
+
+[node name="Wall Vertikal29" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 1118, 607 )
+
+[node name="Wall Vertikal30" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 1118, 672 )
+
+[node name="Wall Vertikal16" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 1886, 287 )
+
+[node name="Wall Vertikal17" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 1886, 351 )
+
+[node name="Wall Vertikal18" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 1886, 416 )
+
+[node name="Wall Vertikal19" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 1886, 479 )
+
+[node name="Wall Vertikal20" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 1886, 543 )
+
+[node name="Wall Vertikal21" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 1886, 607 )
+
+[node name="Wall Vertikal22" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 1886, 672 )
+
+[node name="EnemySlime" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 480, 96 )
+
+[node name="EnemySlime2" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 864, 224 )
+
+[node name="EnemySlime3" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 1376, 224 )
+
+[node name="EnemySlime4" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 1504, 608 )
+
+[node name="Grid" parent="YSort" instance=ExtResource( 2 )]
+
+[node name="Barier" parent="YSort" instance=ExtResource( 3 )]
+visible = false
+
+[node name="Finish" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 1793, 640 )
+z_index = -1
+
+[node name="UI" parent="." instance=ExtResource( 4 )]
+margin_top = -1.0
+margin_bottom = 39.0

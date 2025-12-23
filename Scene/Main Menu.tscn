@@ -1,0 +1,113 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/UI/Title.png" type="Texture" id=1]
+[ext_resource path="res://Assets/UI/Out.png" type="Texture" id=2]
+[ext_resource path="res://Assets/UI/start.png" type="Texture" id=3]
+[ext_resource path="res://Assets/UI/Setting.png" type="Texture" id=4]
+[ext_resource path="res://Assets/UI/Materi.png" type="Texture" id=5]
+[ext_resource path="res://Assets/UI/About.png" type="Texture" id=6]
+[ext_resource path="res://Assets/BG/BG HOME.png" type="Texture" id=7]
+[ext_resource path="res://Script/Main Menu.gd" type="Script" id=8]
+
+[node name="Main Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 8 )
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="Tittle" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -487.0
+margin_right = 487.0
+margin_bottom = 372.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="Start" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -185.0
+margin_top = -8.0
+margin_right = 234.0
+margin_bottom = 112.0
+flat = true
+expand_icon = true
+
+[node name="TextureRect" type="TextureRect" parent="Start"]
+margin_right = 419.0
+margin_bottom = 120.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="About" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.618
+anchor_right = 0.5
+anchor_bottom = 0.618
+margin_left = -185.0
+margin_top = -12.4399
+margin_right = 234.0
+margin_bottom = 107.56
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="About"]
+margin_right = 419.0
+margin_bottom = 120.0
+texture = ExtResource( 6 )
+expand = true
+
+[node name="Materi" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.724
+anchor_right = 0.5
+anchor_bottom = 0.724
+margin_left = -185.0
+margin_top = -1.91998
+margin_right = 233.0
+margin_bottom = 118.08
+flat = true
+expand_icon = true
+
+[node name="TextureRect" type="TextureRect" parent="Materi"]
+margin_right = 419.0
+margin_bottom = 120.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Exit" type="Button" parent="."]
+margin_left = 10.0
+margin_top = 15.0
+margin_right = 135.0
+margin_bottom = 140.0
+flat = true
+expand_icon = true
+
+[node name="TextureRect" type="TextureRect" parent="Exit"]
+margin_right = 125.0
+margin_bottom = 125.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="Setting" type="Button" parent="."]
+margin_left = 140.0
+margin_top = 15.0
+margin_right = 265.0
+margin_bottom = 140.0
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="Setting"]
+margin_right = 125.0
+margin_bottom = 126.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+volume_db = 24.0
