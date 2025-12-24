@@ -20,6 +20,7 @@ onready var sprite = $AnimatedSprite
 onready var text_edit = get_node("../../UI/TextureRect/TextEdit")
 onready var sfx_step = $SFX/SFXSteps
 onready var sfx_attack = $SFX/SFXAttack
+onready var sfx_finish = $SFX/SFXFinish
 
 var StageCompletedScene = preload("res://Scene/StageCompleted.tscn")
 
@@ -469,6 +470,7 @@ func reset_script():
 	
 	sfx_step.stop()
 	sfx_attack.stop()
+	sfx_finish.stop()
 
 func apply_knockback():
 	if is_knockback: return
@@ -511,6 +513,7 @@ func die():
 
 func victory():
 	sfx_step.stop()
+	sfx_attack.stop()
 	running = false
 	set_process(false)
 	_sprite_idle()
@@ -526,7 +529,9 @@ func victory():
 	add_child(tween)
 	tween.interpolate_property(self, "modulate:a", 1.0, 0.0, 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	tween.start()
+	sfx_finish.play()
 	yield(tween, "tween_completed")
+	
 	
 	var current_scene_name = get_tree().current_scene.filename.get_file().get_basename()
 	var win_instance = StageCompletedScene.instance()

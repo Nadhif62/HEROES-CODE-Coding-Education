@@ -25,7 +25,7 @@ var story_database = {
 	"Stage1_Outro": [
 		{"text": "Padang rumput telah bersih. Hasil buruan Knight jauh melampaui peserta lain.", "anim": "text_appear"},
 		{"text": "Knight: \"Kita berhasil! Langkah pertama selesai. Selanjutnya... Ibukota!\"", "anim": "text_appear"},
-		{"text": "Dengan bangga, Knight meninggalkan desa menuju takdir barunya.", "anim": "fade_out_black"}
+		{"text": "Dengan bangga, Knight meninggalkan desa menuju takdir barunya.", "anim": "text_appear"}
 	],
 	"Stage2": [
 		{"text": "Knight berhasil menjadi ksatria kerajaan. Mimpinya mulai terwujud.", "anim": "text_appear"},
@@ -39,7 +39,7 @@ var story_database = {
 	"Stage2_Outro": [
 		{"text": "Makhluk-makhluk itu lenyap menjadi asap hitam.", "anim": "text_appear"},
 		{"text": "Namun, tanah di bawah kaki Knight tiba-tiba runtuh, menariknya ke dalam kegelapan abadi.", "anim": "text_appear"},
-		{"text": "Knight: \"Ughhh...!\"", "anim": "fade_out_black"}
+		{"text": "Knight: \"Ughhh...!\"", "anim": "text_appear"}
 	],
 	"Stage3": [
 		{"text": "Knight terbangun di sebuah ruangan batu yang lembab dan misterius.", "anim": "text_appear"},
@@ -53,7 +53,7 @@ var story_database = {
 	"Stage3_Outro": [
 		{"text": "Jalan keluar mulai terlihat, namun itu bukan jalan menuju permukaan.", "anim": "text_appear"},
 		{"text": "Knight: \"Pintu besar ini... Aura kematian di baliknya sangat pekat.\"", "anim": "text_appear"},
-		{"text": "Dengan ragu, Knight mendorong pintu raksasa itu.", "anim": "fade_out_black"}
+		{"text": "Dengan ragu, Knight mendorong pintu raksasa itu.", "anim": "text_appear"}
 	],
 	"Stage4Phase1": [
 		{"text": "Di balik pintu, Knight menemukan aula raksasa penuh tulang belulang hitam dan sebuah buku harian usang.", "anim": "text_appear"},
@@ -78,7 +78,7 @@ var story_database = {
 	"Stage4_Outro": [
 		{"text": "Pasukan elit hancur. Pertahanan Necromancer terbuka lebar.", "anim": "text_appear"},
 		{"text": "Knight: \"Ini akhiranmu!\"", "anim": "text_appear"},
-		{"text": "Sebuah tebasan terakhir siap dilancarkan.", "anim": "fade_out_black"}
+		{"text": "Sebuah tebasan terakhir siap dilancarkan.", "anim": "text_appear"}
 	],
 	"Stage5Phase1": [
 		{"text": "Tebasan pedang Knight menembus dada Necromancer.", "anim": "text_appear"},
@@ -103,7 +103,7 @@ var story_database = {
 	"Stage5Phase4": [
 		{"text": "Knight: \"Huf... huf... huf...\"", "anim": "text_appear"},
 		{"text": "Demon Lord: \"Menyerahlah. Kau punya potensi. Jadilah bawahanku.\"", "anim": "text_appear"},
-		{"text": "Demon Lord: \"Dengan kekuatan mutlak, kedamaian sejati akan terwujud. Bukankah itu yang kau cari?\"", "anim": "text_appear"},
+		{"text": "Demon Lord: \"Dengan kekuatan mutlak, kedamaian sejati akan terwujud. Bukankah ini yang kau cari?\"", "anim": "text_appear"},
 		{"text": "Knight: \"Kau salah! Dari awal... yang kuharapkan hanyalah menjadi pahlawan.\"", "anim": "text_appear"},
 		{"text": "Knight: \"Pahlawan sejati tidak mewujudkan kedamaian dengan tirani dan rasa takut!\"", "anim": "text_appear"},
 		{"text": "Demon Lord: \"Baiklah. Matilah bersama mimpi naifmu itu.\"", "anim": "text_appear"},
@@ -112,7 +112,7 @@ var story_database = {
 	"Stage5_Outro": [
 		{"text": "Cahaya menyilaukan meledak saat benturan terakhir terjadi. Tubuh Knight hancur, namun Demon Lord berhasil disegel kembali.", "anim": "text_appear"},
 		{"text": "Knight: \"Aku berhasil ya... Apakah ini akhir dari mimpinya?\"", "anim": "text_appear"},
-		{"text": "Kesadaran Knight perlahan menghilang dalam keheningan.", "anim": "fade_out_black"},
+		{"text": "Kesadaran Knight perlahan menghilang dalam keheningan.", "anim": "text_appear"},
 		{"text": "...", "anim": "text_appear"},
 		{"text": "Knight: \"Dimana ini?\"", "anim": "text_appear"},
 		{"text": "Narator: \"Selamat datang di Hall of Heroes. Tempat peristirahatan abadi para jiwa pemberani.\"", "anim": "text_appear"},
@@ -123,11 +123,18 @@ var story_database = {
 		{"text": "Narator: \"Kau melindungi dunia ini dengan nyawamu. Itu sudah cukup.\"", "anim": "text_appear"},
 		{"text": "Air mata menetes di wajah Knight. Di akhir hayatnya, ia akhirnya menemukan kedamaian.", "anim": "text_appear"},
 		{"text": "Sang Knight... akhirnya menjadi Pahlawan.", "anim": "text_appear"}
+	],
+	"GameOver": [
+		{"text": "Luka ini terlalu dalam... Tubuh Knight ambruk ke tanah.", "anim": "text_appear"},
+		{"text": "Knight: \"Maafkan aku... Aku belum cukup kuat...\"", "anim": "text_appear"},
+		{"text": "Pandangan perlahan menggelap. Perjuangan ini harus terhenti sementara.", "anim": "text_appear"}
 	]
 }
 
 var bgm_list = {
 	"menu_bgm": load("res://Assets/BGM/BGM_Main Menu.mp3"),
+	"bgm_1_3": load("res://Assets/BGM/BGM_Stage1-3.mp3"), 
+	"bgm_4_5": load("res://Assets/BGM/BGM_Stage4-5.mp3")
 }
 
 func _ready():
@@ -148,6 +155,7 @@ func change_scene_with_story(target_scene_path, specific_key = ""):
 		story_key = target_scene_path.get_file().get_basename()
 	
 	if story_database.has(story_key) and not skip_story_on:
+		stop_bgm()
 		current_story_key = story_key
 		next_scene_path_buffer = target_scene_path
 		get_tree().change_scene("res://Scene/StoryScene.tscn")
@@ -156,9 +164,20 @@ func change_scene_with_story(target_scene_path, specific_key = ""):
 
 func play_bgm(name):
 	if not bgm_list.has(name): return
-	bgm_player.stream = bgm_list[name]
+	
+	var stream = bgm_list[name]
+	if bgm_player.stream == stream and bgm_player.playing:
+		return
+		
+	bgm_player.stream = stream
 	bgm_player.play()
 	is_bgm_playing = true
+
+func play_stage_bgm(id):
+	if id >= 1 and id <= 3:
+		play_bgm("bgm_1_3")
+	elif id >= 4 and id <= 5:
+		play_bgm("bgm_4_5")
 
 func stop_bgm():
 	bgm_player.stop()

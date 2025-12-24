@@ -1,6 +1,8 @@
 extends Control
 
 onready var button = $Button
+onready var sfx_victory = $SFXStageCompleted
+
 var completed_stage_name = ""
 
 func _ready():
@@ -12,6 +14,11 @@ func _ready():
 
 func show_victory(stage_name_ref):
 	completed_stage_name = stage_name_ref
+
+	Global.stop_bgm()
+	if sfx_victory:
+		sfx_victory.play()
+	
 	show()
 	get_tree().paused = true
 

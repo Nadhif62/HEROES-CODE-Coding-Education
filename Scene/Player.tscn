@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://Assets/Knight/Knight Running Behind 3.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Knight/Knight Idle2.png" type="Texture" id=2]
@@ -50,7 +50,8 @@
 [ext_resource path="res://Assets/Knight/Knight Attack Behind4.png" type="Texture" id=48]
 [ext_resource path="res://Script/Player.gd" type="Script" id=49]
 [ext_resource path="res://Assets/SFX/Knight and SkeletonAttack.mp3" type="AudioStream" id=50]
-[ext_resource path="res://Assets/SFX/Steps.mp3" type="AudioStream" id=51]
+[ext_resource path="res://Assets/SFX/Steps.wav" type="AudioStream" id=51]
+[ext_resource path="res://Assets/SFX/Finish.wav" type="AudioStream" id=52]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -140,4 +141,8 @@ bus = "SFX"
 
 [node name="SFXAttack" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 50 )
+bus = "SFX"
+
+[node name="SFXFinish" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 52 )
 bus = "SFX"

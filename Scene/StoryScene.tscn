@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Script/StoryScene.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/pixelmix.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/SFX/Dialogue.wav" type="AudioStream" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -110,5 +111,9 @@ scroll_active = false
 anims/RESET = SubResource( 2 )
 anims/fade_out = SubResource( 4 )
 anims/text_appear = SubResource( 3 )
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "SFX"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

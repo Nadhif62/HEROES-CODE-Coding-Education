@@ -1,8 +1,12 @@
 extends Control
 
-# Pastikan path ini benar (karena tadi RichTextLabel dipindah ke dalam VBoxContainer)
 onready var text_label = $VBoxContainer/RichTextLabel 
 onready var anim_player = $AnimationPlayer
+onready var sfx_player = $SFXPlayer
+
+# Atur kecepatan suara di sini (0.1 = cepat, 0.2 = sedang, 0.5 = lambat)
+export var sfx_interval = 0.1 
+var sfx_timer = 0.0
 
 var dialogue_queue = []
 var index = 0
@@ -16,16 +20,22 @@ func _ready():
 	else:
 		finish_story()
 
-func _process(_delta):
-	# Input untuk lanjut
+func _process(delta):
+	# Logic Looping Suara Manual
+	if state == "TYPING":
+		sfx_timer -= delta
+		if sfx_timer <= 0:
+			sfx_player.play()
+			sfx_timer = sfx_interval
+
+	# Input Logic
 	if Input.is_action_just_pressed("ui_accept") or Input.is_mouse_button_pressed(BUTTON_LEFT):
 		match state:
 			"TYPING":
-				# Skip ngetik -> langsung muncul semua
+				sfx_player.stop() # Matikan suara sisa
 				anim_player.seek(anim_player.current_animation_length, true)
 				state = "WAITING"
 			"WAITING":
-				# Mainkan fade out sebelum ganti teks
 				anim_player.play("fade_out")
 				state = "FADING"
 
@@ -35,13 +45,14 @@ func load_dialogue():
 		
 		text_label.bbcode_text = "[center]" + line["text"] + "[/center]"
 		
-		# Reset kondisi visual manual (Jaga-jaga)
 		text_label.percent_visible = 0
 		text_label.modulate.a = 1.0 
 		
 		var anim_name = line.get("anim", "text_appear")
 		if anim_player.has_animation(anim_name):
 			anim_player.play(anim_name)
+			# Reset timer biar langsung bunyi pas mulai
+			sfx_timer = 0.0 
 			state = "TYPING"
 		else:
 			text_label.percent_visible = 1
@@ -60,5 +71,5 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "text_appear":
 		state = "WAITING"
 	elif anim_name == "fade_out":
-		index += 1 # Pindah ke kalimat berikutnya
-		load_dialogue() # Muat kalimat baru
+		index += 1
+		load_dialogue()

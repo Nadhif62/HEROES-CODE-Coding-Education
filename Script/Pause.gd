@@ -1,6 +1,7 @@
 extends Control
 
-var SettingScene = preload("res://Scene/Setting.tscn") 
+var SettingScene = preload("res://Scene/Setting.tscn")
+var GameOverScene = preload("res://Scene/GameOver.tscn")
 
 onready var stage_pause = $StagePause
 onready var btn_back = $BackToGame
@@ -10,7 +11,7 @@ onready var sfx_click = $SFXClick
 
 func _ready():
 	visible = false
-	pause_mode = Node.PAUSE_MODE_PROCESS 
+	pause_mode = Node.PAUSE_MODE_PROCESS
 
 	btn_back.connect("pressed", self, "_on_BackToGame_pressed")
 	btn_setting.connect("pressed", self, "_on_Setting_pressed")
@@ -23,7 +24,7 @@ func _load_stage_pause_ui():
 	var id = scene.get("stage_id")
 
 	if id == null:
-		return 
+		return
 
 	var path = "res://Assets/UI/Pause Stage %s.png" % id
 
@@ -50,6 +51,8 @@ func _on_Setting_pressed():
 
 func _on_Home_pressed():
 	sfx_click.play()
-	yield(get_tree().create_timer(0.2), "timeout")
-	get_tree().paused = false
-	get_tree().change_scene("res://Scene/Main Menu.tscn")
+	visible = false
+	
+	var game_over_instance = GameOverScene.instance()
+	get_tree().current_scene.add_child(game_over_instance)
+	game_over_instance.show_game_over()

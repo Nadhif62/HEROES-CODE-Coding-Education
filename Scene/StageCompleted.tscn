@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Script/StageComplated.gd" type="Script" id=1]
 [ext_resource path="res://Assets/UI/StageComplate.png" type="Texture" id=2]
 [ext_resource path="res://Assets/UI/BackToHome.png" type="Texture" id=3]
+[ext_resource path="res://Assets/SFX/GameComplate.mp3" type="AudioStream" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.729412 )
@@ -16,22 +17,26 @@ margin_bottom = 1080.0
 custom_styles/panel = SubResource( 1 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 197.0
+margin_left = 201.0
 margin_top = 203.0
-margin_right = 1731.0
+margin_right = 1735.0
 margin_bottom = 785.0
 texture = ExtResource( 2 )
 expand = true
 
 [node name="Button" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 710.0
-margin_top = 700.0
-margin_right = 1113.0
-margin_bottom = 844.0
-icon = ExtResource( 3 )
+margin_left = 709.0
+margin_top = 709.0
+margin_right = 1222.0
+margin_bottom = 929.0
 flat = true
-expand_icon = true
+
+[node name="TextureRect" type="TextureRect" parent="Button"]
+margin_right = 513.0
+margin_bottom = 220.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="SFXStageCompleted" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "SFX"
