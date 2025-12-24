@@ -39,7 +39,7 @@ func connect_back_button():
 		if not back_button.is_connected("pressed", self, "_on_back_button_pressed"):
 			back_button.connect("pressed", self, "_on_back_button_pressed")
 	else:
-		print("⚠️ Node Back tidak ditemukan!")
+		print("Node Back tidak ditemukan!")
 		
 func connect_stage_buttons():
 	for i in range(stage_buttons.size()):
@@ -63,7 +63,7 @@ func _on_stage_button_pressed(stage_number):
 	yield(get_tree().create_timer(0.2), "timeout")
 	
 	if ResourceLoader.exists(path):
-		get_tree().change_scene(path)
+		Global.change_scene_with_story(path)
 	else:
 		print("Scene tidak ditemukan: %s" % path)
 

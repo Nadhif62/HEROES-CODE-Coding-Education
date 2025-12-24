@@ -1,0 +1,64 @@
+extends Control
+
+# Pastikan path ini benar (karena tadi RichTextLabel dipindah ke dalam VBoxContainer)
+onready var text_label = $VBoxContainer/RichTextLabel 
+onready var anim_player = $AnimationPlayer
+
+var dialogue_queue = []
+var index = 0
+var state = "IDLE"
+
+func _ready():
+	var key = Global.current_story_key
+	if Global.story_database.has(key):
+		dialogue_queue = Global.story_database[key]
+		load_dialogue()
+	else:
+		finish_story()
+
+func _process(_delta):
+	# Input untuk lanjut
+	if Input.is_action_just_pressed("ui_accept") or Input.is_mouse_button_pressed(BUTTON_LEFT):
+		match state:
+			"TYPING":
+				# Skip ngetik -> langsung muncul semua
+				anim_player.seek(anim_player.current_animation_length, true)
+				state = "WAITING"
+			"WAITING":
+				# Mainkan fade out sebelum ganti teks
+				anim_player.play("fade_out")
+				state = "FADING"
+
+func load_dialogue():
+	if index < dialogue_queue.size():
+		var line = dialogue_queue[index]
+		
+		text_label.bbcode_text = "[center]" + line["text"] + "[/center]"
+		
+		# Reset kondisi visual manual (Jaga-jaga)
+		text_label.percent_visible = 0
+		text_label.modulate.a = 1.0 
+		
+		var anim_name = line.get("anim", "text_appear")
+		if anim_player.has_animation(anim_name):
+			anim_player.play(anim_name)
+			state = "TYPING"
+		else:
+			text_label.percent_visible = 1
+			state = "WAITING"
+	else:
+		finish_story()
+
+func finish_story():
+	var target = Global.next_scene_path_buffer
+	if target != "":
+		get_tree().change_scene(target)
+	else:
+		get_tree().change_scene("res://Scene/Main Menu.tscn")
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "text_appear":
+		state = "WAITING"
+	elif anim_name == "fade_out":
+		index += 1 # Pindah ke kalimat berikutnya
+		load_dialogue() # Muat kalimat baru

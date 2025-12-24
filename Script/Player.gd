@@ -412,7 +412,7 @@ func _attack():
 	while is_knockback: yield(get_tree(), "idle_frame")
 	if not running: return
 	
-	sfx_step.stop() # MATIKAN suara langkah agar tidak bocor
+	sfx_step.stop()
 	sfx_attack.play()
 	
 	if sprite.frames.has_animation("knight_attack_" + facing):
@@ -467,7 +467,6 @@ func reset_script():
 	get_tree().call_group("enemy", "revive")
 	get_tree().call_group("finish", "reset")
 	
-	# Matikan semua sfx saat reset
 	sfx_step.stop()
 	sfx_attack.stop()
 
@@ -476,7 +475,7 @@ func apply_knockback():
 	is_knockback = true
 	_sprite_idle()
 	
-	sfx_step.stop() # Knockback juga harus stop langkah
+	sfx_step.stop()
 	
 	var t_flash = Tween.new()
 	add_child(t_flash)
@@ -500,7 +499,7 @@ func apply_knockback():
 	is_knockback = false
 
 func die():
-	sfx_step.stop() # Pastikan diam saat mati
+	sfx_step.stop()
 	running = false
 	set_process(false)
 	yield(get_tree().create_timer(0.8 / float(speed_multiplier)), "timeout")
@@ -511,23 +510,28 @@ func die():
 	yield(tween, "tween_completed")
 
 func victory():
-	sfx_step.stop() # PENTING: Matikan suara langkah saat menang
+	sfx_step.stop()
 	running = false
 	set_process(false)
 	_sprite_idle()
+	
 	if next_phase_scene and next_phase_scene != "":
 		yield(get_tree().create_timer(0.5), "timeout")
-		get_tree().change_scene(next_phase_scene)
+		Global.change_scene_with_story(next_phase_scene)
 		return
+
 	Global.unlock_next_stage(current_stage_id)
+	
 	var tween = Tween.new()
 	add_child(tween)
 	tween.interpolate_property(self, "modulate:a", 1.0, 0.0, 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	tween.start()
 	yield(tween, "tween_completed")
+	
+	var current_scene_name = get_tree().current_scene.filename.get_file().get_basename()
 	var win_instance = StageCompletedScene.instance()
 	get_tree().current_scene.add_child(win_instance)
-	win_instance.show_victory()
+	win_instance.show_victory(current_scene_name)
 
 func _check_surrounding_enemies():
 	var enemies = get_tree().get_nodes_in_group("enemy")
