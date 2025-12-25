@@ -16,14 +16,7 @@ func _ready():
 	if dir.file_exists(path_lengkap):
 		var gambar = load(path_lengkap)
 		tempat_foto.texture = gambar
-		
-		match Global.materi_aktif:
-			2:
-				tempat_foto.rect_min_size = Vector2(3380, 4000)
-			3:
-				tempat_foto.rect_min_size = Vector2(3380, 3000)
-			_:
-				tempat_foto.rect_min_size = gambar.get_size()
+		tempat_foto.rect_min_size = gambar.get_size()
 	else:
 		print("ERROR: Gambar tidak ditemukan di " + path_lengkap)
 

@@ -25,23 +25,11 @@ func _ready():
 	scrollbar.add_stylebox_override("grabber_pressed", style_batang)
 	scrollbar.add_stylebox_override("scroll", style_jalur)
 	
-	if vbox_container.has_node("MateriBtn1"): 
-		vbox_container.get_node("MateriBtn1").connect("pressed", self, "buka_materi", [1])
+	for i in range(9):
+		var nama_tombol = "MateriBtn" + str(i)
 		
-	if vbox_container.has_node("MateriBtn2"): 
-		vbox_container.get_node("MateriBtn2").connect("pressed", self, "buka_materi", [2])
-		
-	if vbox_container.has_node("MateriBtn3"): 
-		vbox_container.get_node("MateriBtn3").connect("pressed", self, "buka_materi", [3])
-		
-	if vbox_container.has_node("MateriBtn4"): 
-		vbox_container.get_node("MateriBtn4").connect("pressed", self, "buka_materi", [4])
-		
-	if vbox_container.has_node("MateriBtn5"): 
-		vbox_container.get_node("MateriBtn5").connect("pressed", self, "buka_materi", [5])
-		
-	if vbox_container.has_node("MateriBtn6"): 
-		vbox_container.get_node("MateriBtn6").connect("pressed", self, "buka_materi", [6])
+		if vbox_container.has_node(nama_tombol):
+			vbox_container.get_node(nama_tombol).connect("pressed", self, "buka_materi", [i])
 
 	if close_button:
 		close_button.connect("pressed", self, "_on_close_pressed")
