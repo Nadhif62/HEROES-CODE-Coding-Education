@@ -3,8 +3,6 @@ extends Control
 onready var text_label = $VBoxContainer/RichTextLabel 
 onready var anim_player = $AnimationPlayer
 onready var sfx_player = $SFXPlayer
-
-# Atur kecepatan suara di sini (0.1 = cepat, 0.2 = sedang, 0.5 = lambat)
 export var sfx_interval = 0.1 
 var sfx_timer = 0.0
 
@@ -21,18 +19,16 @@ func _ready():
 		finish_story()
 
 func _process(delta):
-	# Logic Looping Suara Manual
 	if state == "TYPING":
 		sfx_timer -= delta
 		if sfx_timer <= 0:
 			sfx_player.play()
 			sfx_timer = sfx_interval
 
-	# Input Logic
 	if Input.is_action_just_pressed("ui_accept") or Input.is_mouse_button_pressed(BUTTON_LEFT):
 		match state:
 			"TYPING":
-				sfx_player.stop() # Matikan suara sisa
+				sfx_player.stop()
 				anim_player.seek(anim_player.current_animation_length, true)
 				state = "WAITING"
 			"WAITING":
@@ -51,7 +47,6 @@ func load_dialogue():
 		var anim_name = line.get("anim", "text_appear")
 		if anim_player.has_animation(anim_name):
 			anim_player.play(anim_name)
-			# Reset timer biar langsung bunyi pas mulai
 			sfx_timer = 0.0 
 			state = "TYPING"
 		else:

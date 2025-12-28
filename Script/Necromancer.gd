@@ -5,8 +5,6 @@ var has_summoned = false
 
 onready var sprite = $AnimatedSprite
 onready var collision = $CollisionShape2D
-
-# Setup Audio
 onready var sfx_summon = $SFX/SFXSummon
 onready var sfx_death = $SFX/SFXDeath
 
@@ -23,7 +21,6 @@ func start_summon_sequence(is_instant = false):
 		sprite.play("necromancer_idle")
 		get_tree().call_group("summoned_minion", "spawn_instant")
 	else:
-		# Play SFX Summon hanya jika bukan spawn instant
 		sfx_summon.play()
 		sprite.play("necromancer_summon")
 		yield(get_tree().create_timer(0.5), "timeout")
@@ -51,7 +48,6 @@ func die():
 	if is_dead: return
 	is_dead = true
 	
-	# Play SFX Death
 	sfx_death.play()
 	
 	if is_in_group("enemy"):

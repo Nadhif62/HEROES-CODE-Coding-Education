@@ -5,8 +5,6 @@ var has_summoned = false
 
 onready var sprite = $AnimatedSprite
 onready var collision = $CollisionShape2D
-
-# Setup Audio
 onready var sfx_summon = $SFX/SFXSummon
 onready var sfx_death = $SFX/SFXDeath
 
@@ -51,7 +49,6 @@ func die():
 	if is_dead: return
 	is_dead = true
 	
-	# Play SFX Death
 	sfx_death.play()
 	
 	if is_in_group("enemy"):

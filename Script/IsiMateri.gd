@@ -11,15 +11,13 @@ func _ready():
 	
 	var nama_file = "materi_" + str(Global.materi_aktif) + ".png"
 	var path_lengkap = folder_gambar + nama_file
-	
-	var dir = Directory.new()
-	if dir.file_exists(path_lengkap):
+
+	if ResourceLoader.exists(path_lengkap):
 		var gambar = load(path_lengkap)
 		tempat_foto.texture = gambar
 		tempat_foto.rect_min_size = gambar.get_size()
 	else:
 		print("ERROR: Gambar tidak ditemukan di " + path_lengkap)
-
 func _on_BackButton_pressed():
 	sfx_click.play()
 	yield(get_tree().create_timer(0.2), "timeout")
