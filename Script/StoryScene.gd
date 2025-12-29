@@ -3,7 +3,7 @@ extends Control
 onready var text_label = $VBoxContainer/RichTextLabel 
 onready var anim_player = $AnimationPlayer
 onready var sfx_player = $SFXPlayer
-export var sfx_interval = 0.1 
+export var sfx_interval = 0.15 
 var sfx_timer = 0.0
 
 var dialogue_queue = []

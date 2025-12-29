@@ -170,11 +170,20 @@ func set_run_button_enabled(enabled):
 		else:
 			run_button.modulate = Color(0.5, 0.5, 0.5, 1)
 
+func set_pause_button_enabled(enabled):
+	if pause_button:
+		pause_button.disabled = !enabled
+		if enabled:
+			pause_button.modulate = Color(1, 1, 1, 1)
+		else:
+			pause_button.modulate = Color(0.5, 0.5, 0.5, 1)
+
 func _on_run_pressed():
 	sfx_click.play()
 	player.text_edit = text_box
 	if player.has_method("run_script"):
 		set_run_button_enabled(false)
+		set_pause_button_enabled(false)
 		player.run_script()
 		if is_expanded: _on_expand_pressed()
 
@@ -183,9 +192,11 @@ func _on_stop_pressed():
 	if player.has_method("reset_script"):
 		player.reset_script()
 		set_run_button_enabled(true)
+		set_pause_button_enabled(true)
 
 func _on_player_completed():
 	set_run_button_enabled(true)
+	set_pause_button_enabled(true)
 
 func _on_speed_pressed():
 	sfx_click.play()

@@ -75,7 +75,7 @@ var story_database = {
 		{"text": "Necromancer: \"Bodoh! Kau pikir ini sudah berakhir? Rasakan kekuatan pasukan elitku!\"", "anim": "text_appear"},
 		{"text": "Knight: \"Sial... Tidak ada habisnya! Haaaaaa!!!\"", "anim": "text_appear"}
 	],
-	"Stage4_Outro": [
+	"Stage4Phase3_Outro": [
 		{"text": "Pasukan elit hancur. Pertahanan Necromancer terbuka lebar.", "anim": "text_appear"},
 		{"text": "Knight: \"Ini akhiranmu!\"", "anim": "text_appear"},
 		{"text": "Sebuah tebasan terakhir siap dilancarkan.", "anim": "text_appear"}
@@ -109,7 +109,7 @@ var story_database = {
 		{"text": "Demon Lord: \"Baiklah. Matilah bersama mimpi naifmu itu.\"", "anim": "text_appear"},
 		{"text": "Knight: \"Meski harus mati pun... AKU AKAN MENGHENTIKANMU!\"", "anim": "text_appear"}
 	],
-	"Stage5_Outro": [
+	"Stage5Phase4_Outro": [
 		{"text": "Cahaya menyilaukan meledak saat benturan terakhir terjadi. Tubuh Knight hancur, namun Demon Lord berhasil disegel kembali.", "anim": "text_appear"},
 		{"text": "Knight: \"Aku berhasil ya... Apakah ini akhir dari mimpinya?\"", "anim": "text_appear"},
 		{"text": "Kesadaran Knight perlahan menghilang dalam keheningan.", "anim": "text_appear"},

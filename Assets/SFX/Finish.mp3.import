@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Finish.mp3-2ab9f3908ba921db93bcaf01b2b089d8.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/Finish.mp3"
+dest_files=[ "res://.import/Finish.mp3-2ab9f3908ba921db93bcaf01b2b089d8.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

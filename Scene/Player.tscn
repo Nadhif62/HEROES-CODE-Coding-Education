@@ -50,8 +50,8 @@
 [ext_resource path="res://Assets/Knight/Knight Attack Behind4.png" type="Texture" id=48]
 [ext_resource path="res://Script/Player.gd" type="Script" id=49]
 [ext_resource path="res://Assets/SFX/Knight and SkeletonAttack.mp3" type="AudioStream" id=50]
-[ext_resource path="res://Assets/SFX/Steps.wav" type="AudioStream" id=51]
-[ext_resource path="res://Assets/SFX/Finish.wav" type="AudioStream" id=52]
+[ext_resource path="res://Assets/SFX/Steps.mp3" type="AudioStream" id=51]
+[ext_resource path="res://Assets/SFX/Finish.mp3" type="AudioStream" id=52]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
